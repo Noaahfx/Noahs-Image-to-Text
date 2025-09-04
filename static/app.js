@@ -38,7 +38,6 @@ function addFiles(fileList){
   renderFiles();
 }
 
-// --- Health pill in header ---
 async function checkHealth(){
   const statusText = document.getElementById("status-text");
   const statusDot = document.querySelector(".status-dot");
@@ -54,7 +53,6 @@ async function checkHealth(){
 }
 checkHealth();
 
-// --- Loader / progress ---
 function setScreen(visible){
   const screen = document.getElementById("screen");
   if(visible){
@@ -84,7 +82,6 @@ function stopProgress(onDone){
   setTimeout(()=> { if(onDone) onDone(); }, 250); // brief finish flash
 }
 
-// --- Events ---
 dropzone.addEventListener("click", ()=> input.click());
 input.addEventListener("change", (e)=> addFiles(e.target.files));
 

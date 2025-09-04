@@ -5,8 +5,8 @@
   --border:rgba(148,163,184,0.2);
   --text:#e5e7eb;
   --muted:#a3b1c6;
-  --primary:#4f46e5; /* indigo-600 */
-  --accent:#06b6d4;  /* cyan-500 */
+  --primary:#4f46e5;
+  --accent:#06b6d4;
   --ring:rgba(79,70,229,0.35);
   --shadow:0 10px 30px rgba(0,0,0,0.45);
 }
@@ -67,7 +67,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;  /* centers icon + text */
+  justify-content: center;
   text-align: center;
   transition: border-color .2s, box-shadow .2s;
 }
@@ -110,21 +110,14 @@ body {
   padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:600;
 }
 .btn:hover{border-color:var(--accent)}
-/* Polished primary button (no cheap outline) */
-.btn-primary{
-  /* remove inherited outline */
-  border: 0;
 
-  /* richer gradient fill */
+.btn-primary{
+  border: 0;
   background: linear-gradient(135deg, #5b5de6 0%, #22d3ee 100%);
   color: #fff;
   font-weight: 700;
-
-  /* slightly larger to feel premium */
   padding: 12px 18px;
   border-radius: 14px;
-
-  /* soft glow instead of a hard border */
   box-shadow:
     0 8px 20px rgba(79,70,229,.35),
     0 2px 10px rgba(6,182,212,.22);
@@ -134,7 +127,7 @@ body {
   transition: transform .12s ease, box-shadow .2s ease, filter .2s ease;
 }
 
-/* subtle glossy highlight on hover */
+
 .btn-primary::after{
   content: "";
   position: absolute;
@@ -160,7 +153,6 @@ body {
     0 2px 8px rgba(6,182,212,.20);
 }
 
-/* crisp keyboard focus without the ugly default outline */
 .btn-primary:focus-visible{
   outline: none;
   box-shadow:
@@ -201,7 +193,6 @@ body {
 }
 @keyframes spin{to{transform: rotate(360deg)}}
 
-/* Responsive tweaks */
 @media (min-width: 760px){
   .controls{
     align-items: center;
@@ -209,12 +200,10 @@ body {
   .actions{justify-content:end}
 }
 
-/* Apply DM Sans everywhere */
 body, button, input, textarea, select {
   font-family: "DM Sans", sans-serif;
 }
 
-/* Center upload icon & text */
 .dropzone {
   display: flex;
   flex-direction: column;
@@ -222,7 +211,6 @@ body, button, input, textarea, select {
   justify-content: center;
 }
 
-/* Modern toggle switch */
 .switch input[type="checkbox"] {
   appearance: none;
   width: 40px;
@@ -255,7 +243,6 @@ body, button, input, textarea, select {
   transform: translateX(18px);
 }
 
-/* Status indicator */
 .status-indicator {
   display: flex;
   align-items: center;
@@ -271,7 +258,7 @@ body, button, input, textarea, select {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #22c55e; /* green */
+  background: #22c55e;
 }
 .status-offline { background: #ef4444; }
 
@@ -299,7 +286,7 @@ html, body, button, input, textarea, select, .btn, .result__actions button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px; /* keeps spinner + text close together */
+  gap: 12px;
 }
 
 #progress-text {

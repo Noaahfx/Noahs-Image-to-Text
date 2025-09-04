@@ -96,15 +96,13 @@ SCRIPT_TO_PREF_LANGS = {
     "Khmer": ["khm"],
     "Myanmar": ["mya"],
     "Latin": [
-        # Broad Latin set (will be filtered to installed)
+        # Broad Latin set
         "eng","fra","deu","spa","ita","por","nld","ron","pol","ces","slk","slv",
         "hrv","hun","fin","swe","nor","dan","isl","cat","epo","tur","aze",
         "ind","msa","tgl","vie","est","lav","lit","sqi","bos","glg","eus","afr"
     ],
-    # Add more scripts if needed (Armenian, Georgian, Ethiopic, etc.)
 }
 
-# Popular multi-script fallback set (kept short to avoid hurting accuracy)
 POPULAR_FALLBACK = [
     "eng","fra","deu","spa","ita","por","nld",
     "chi_sim","chi_tra","jpn","kor",
@@ -113,7 +111,7 @@ POPULAR_FALLBACK = [
 ]
 
 def preprocess(img: Image.Image) -> Image.Image:
-    """Upscale + gentle normalization (works well for CJK/Arabic)."""
+    """Upscale + gentle normalization."""
     if img.width < 1200:
         scale = 1200 / img.width
         img = img.resize((1200, int(img.height * scale)), Image.LANCZOS)
@@ -146,8 +144,8 @@ def clean_text(text: str, langs: str) -> str:
     if any(x in langs for x in ("chi_", "jpn", "kor")):
         t = t.replace("\n", "")
     else:
-        t = re.sub(r"[ \t]+\n", "\n", t)     # trim trailing spaces
-        t = re.sub(r"\n{3,}", "\n\n", t)     # collapse multi-blank lines
+        t = re.sub(r"[ \t]+\n", "\n", t)
+        t = re.sub(r"\n{3,}", "\n\n", t)
     return t
 
 def choose_fallback_langs(installed: Set[str], limit: int = 8) -> str:
@@ -171,7 +169,6 @@ async def ocr_endpoint(
             img = Image.open(io.BytesIO(raw))
             img = preprocess(img)
 
-            # 1) Try script-aware languages
             lang_hint = detect_langs_with_osd(img, installed)
             langs = lang_hint or choose_fallback_langs(installed)
 
@@ -179,7 +176,6 @@ async def ocr_endpoint(
             text = pytesseract.image_to_string(img, lang=langs, config=config)
             text = clean_text(text, langs)
 
-            # 2) If result is suspiciously short, retry with a broader fallback set
             if len(text) < 8:
                 broad_langs = choose_fallback_langs(installed, limit=12)
                 if broad_langs != langs:
