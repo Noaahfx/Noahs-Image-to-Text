@@ -1,0 +1,311 @@
+:root{
+  --bg:#0b1221;
+  --surface:rgba(17,24,39,0.6);
+  --card:rgba(18,27,47,0.65);
+  --border:rgba(148,163,184,0.2);
+  --text:#e5e7eb;
+  --muted:#a3b1c6;
+  --primary:#4f46e5; /* indigo-600 */
+  --accent:#06b6d4;  /* cyan-500 */
+  --ring:rgba(79,70,229,0.35);
+  --shadow:0 10px 30px rgba(0,0,0,0.45);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  color: var(--text);
+  background: linear-gradient(135deg, rgba(79,70,229,0.3), rgba(6,182,212,0.3)) fixed,
+              var(--bg);
+  line-height: 1.5;
+}
+
+.bg-grid {
+  position: fixed; inset: 0; pointer-events: none;
+  background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+
+.site-header, .site-footer{
+  max-width:1100px; margin:auto; padding:20px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+
+.brand{display:flex; align-items:center; gap:14px}
+.brand__logo{width:44px; height:44px}
+.brand__text h1{margin:0; font-size:1.35rem; font-weight:700; letter-spacing:.2px}
+.brand__text p{margin:2px 0 0; color:var(--muted); font-size:.95rem}
+
+.health-pill{
+  font-size:.85rem; color:var(--text); text-decoration:none;
+  padding:8px 12px; border:1px solid var(--border); border-radius:999px; background:var(--surface);
+}
+
+.container{max-width:1100px; margin:10px auto 60px; padding:16px}
+
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
+  border:1px solid var(--border); border-radius:20px; box-shadow:var(--shadow);
+  backdrop-filter: blur(10px);
+  padding:24px;
+}
+
+.hero h2{margin:0 0 6px; font-size:1.4rem}
+.muted{color:var(--muted)}
+
+.uploader{margin-top:10px}
+
+.dropzone {
+  border: 1.5px dashed var(--border);
+  border-radius: 16px;
+  background: var(--card);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;  /* centers icon + text */
+  text-align: center;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.dropzone:focus, .dropzone.dragover{
+  border-color:var(--accent);
+  box-shadow:0 0 0 6px var(--ring);
+}
+.dropzone .icon{
+  width:36px; height:36px; color:var(--accent); opacity:.9;
+}
+.dz-text{margin-top:10px; display:flex; flex-direction:column; align-items:center; gap:6px}
+.dz-text strong{font-weight:600}
+.dz-text span{color:var(--muted); font-size:.95rem}
+
+.controls {
+  margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.control{display:flex; flex-direction:column; gap:6px}
+.control input[type="text"]{
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--border); color:var(--text);
+  padding:10px 12px; border-radius:12px; font-size:1rem; outline:none;
+}
+.control input[type="text"]:focus{
+  border-color:var(--accent); box-shadow:0 0 0 6px var(--ring);
+}
+.switch{flex-direction:row; align-items:center; justify-content:space-between}
+
+.actions{display:flex; flex-wrap:wrap; gap:10px}
+.btn{
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:600;
+}
+.btn:hover{border-color:var(--accent)}
+/* Polished primary button (no cheap outline) */
+.btn-primary{
+  /* remove inherited outline */
+  border: 0;
+
+  /* richer gradient fill */
+  background: linear-gradient(135deg, #5b5de6 0%, #22d3ee 100%);
+  color: #fff;
+  font-weight: 700;
+
+  /* slightly larger to feel premium */
+  padding: 12px 18px;
+  border-radius: 14px;
+
+  /* soft glow instead of a hard border */
+  box-shadow:
+    0 8px 20px rgba(79,70,229,.35),
+    0 2px 10px rgba(6,182,212,.22);
+
+  position: relative;
+  isolation: isolate;
+  transition: transform .12s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+/* subtle glossy highlight on hover */
+.btn-primary::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,.25), transparent 40%);
+  opacity: 0;
+  transition: opacity .2s ease;
+  pointer-events: none;
+}
+
+.btn-primary:hover{
+  box-shadow:
+    0 12px 28px rgba(79,70,229,.40),
+    0 6px 16px rgba(6,182,212,.26);
+}
+.btn-primary:hover::after{ opacity: .45; }
+
+.btn-primary:active{
+  transform: translateY(0);
+  box-shadow:
+    0 6px 14px rgba(79,70,229,.30),
+    0 2px 8px rgba(6,182,212,.20);
+}
+
+/* crisp keyboard focus without the ugly default outline */
+.btn-primary:focus-visible{
+  outline: none;
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,.15),
+    0 0 0 6px var(--ring),
+    0 10px 22px rgba(79,70,229,.35);
+}
+
+.btn-ghost{background:transparent}
+
+.results{margin-top:22px; display:grid; gap:16px}
+.result{
+  background:rgba(13,19,35,0.6); border:1px solid var(--border);
+  border-radius:16px; padding:16px;
+  display:grid; gap:12px;
+}
+.result__meta{display:flex; align-items:center; justify-content:space-between; gap:12px}
+.result__name{font-weight:600}
+.result__actions{display:flex; gap:8px; flex-wrap:wrap}
+.result__img{
+  max-width:100%; border-radius:12px; border:1px solid var(--border)
+}
+.result textarea{
+  width:100%; min-height:140px; resize:vertical; border-radius:12px;
+  border:1px solid var(--border); background:rgba(255,255,255,0.03);
+  color:var(--text); padding:12px; font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+
+.site-footer{justify-content:center}
+.site-footer p{color:var(--muted); font-size:.9rem}
+
+.hidden{display:none}
+.spinner{
+  width:40px; height:40px; border-radius:50%;
+  border:3px solid rgba(255,255,255,0.25);
+  border-top-color: var(--accent);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin{to{transform: rotate(360deg)}}
+
+/* Responsive tweaks */
+@media (min-width: 760px){
+  .controls{
+    align-items: center;
+  }
+  .actions{justify-content:end}
+}
+
+/* Apply DM Sans everywhere */
+body, button, input, textarea, select {
+  font-family: "DM Sans", sans-serif;
+}
+
+/* Center upload icon & text */
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modern toggle switch */
+.switch input[type="checkbox"] {
+  appearance: none;
+  width: 40px;
+  height: 22px;
+  background: var(--border);
+  border-radius: 999px;
+  position: relative;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.switch input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 2px;
+  left: 2px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.25s ease;
+}
+
+.switch input[type="checkbox"]:checked {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+}
+
+.switch input[type="checkbox"]:checked::before {
+  transform: translateX(18px);
+}
+
+/* Status indicator */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  background: var(--surface);
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22c55e; /* green */
+}
+.status-offline { background: #ef4444; }
+
+html, body, button, input, textarea, select, .btn, .result__actions button {
+  font-family: "DM Sans", sans-serif !important;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.screen {
+  position: fixed; inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(4px);
+  z-index: 30;
+}
+
+.loading-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px; /* keeps spinner + text close together */
+}
+
+#progress-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.screen.hidden { display: none !important; }

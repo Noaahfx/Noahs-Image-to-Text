@@ -1,0 +1,17 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t">
+  <title id="t">Noah — App Badge</title>
+  <defs>
+    <linearGradient id="g" x1="8" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1E3A8A"/>
+      <stop offset="0.55" stop-color="#2746C7"/>
+      <stop offset="1" stop-color="#1BC6FF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- outer glow border -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#g)"/>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="#8B5CF6" stroke-width="2" opacity="0.9"/>
+
+  <!-- N monogram (built from paths so no font dependency) -->
+  <path d="M20 44 V20 L44 44 V20" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
