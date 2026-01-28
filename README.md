@@ -199,16 +199,3 @@ $env:TESSERACT_CMD="C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 **Non-Latin text looks like gibberish**
 → That language’s traineddata is missing. Run `tesseract --list-langs` and install it.
-
----
-## 🔒 Privacy
-
-Images are processed on your server (or inside your Docker container). No external upload.
-
----
-
-## 📜 License
-
-Personal/educational use.
-
----
