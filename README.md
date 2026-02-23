@@ -1,8 +1,4 @@
 # Noah’s Image to Text (OCR)
-
-Sleek, responsive image-to-text web app using **FastAPI** + **Tesseract**.
-Drag & drop images and get clean, copy-ready text. Modern UI (DM Sans), mobile-friendly, with a centered loading overlay + percentage.
-
 ---
 
 ## ✨ Features
