@@ -1,5 +1,4 @@
 # Noah’s Image to Text (OCR)
----
 
 ## ✨ Features
 
